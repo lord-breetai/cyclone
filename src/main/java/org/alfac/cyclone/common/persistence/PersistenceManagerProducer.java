@@ -1,8 +1,7 @@
-package org.alfac.config;
+package org.alfac.cyclone.common.persistence;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
@@ -16,16 +15,16 @@ import javax.persistence.PersistenceUnit;
 public class PersistenceManagerProducer {
 
     @PersistenceUnit
-    private EntityManagerFactory entityManagerFactory;
+    private EntityManagerFactory factory;
 
     @Produces
-    @Default
     @RequestScoped
+    @DefaultEntityManager
     public EntityManager create() {
-        return entityManagerFactory.createEntityManager();
+        return factory.createEntityManager();
     }
 
-    public void dispose(@Disposes @Default EntityManager entityManager) {
+    public void dispose(@Disposes @DefaultEntityManager EntityManager entityManager) {
         if (entityManager.isOpen()) {
             entityManager.close();
         }
