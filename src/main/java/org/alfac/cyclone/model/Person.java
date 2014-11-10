@@ -1,6 +1,8 @@
 package org.alfac.cyclone.model;
 
 import org.alfac.cyclone.common.persistence.JPAEntity;
+import org.apache.deltaspike.data.api.audit.CreatedOn;
+import org.apache.deltaspike.data.api.audit.ModifiedOn;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -44,10 +46,12 @@ public class Person implements JPAEntity<Long> {
     @JoinColumn(name = PersonTable.ColumnName.BIRTH_COUNTRY_ID, referencedColumnName = CountryTable.ColumnName.COUNTRY_ID, nullable = false)
     private Country birthCountry;
 
+    @CreatedOn
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = PersonTable.ColumnName.CREATE_DATE, nullable = false, insertable = true, updatable = false)
     private Date createDate;
 
+    @ModifiedOn
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = PersonTable.ColumnName.UPDATE_DATE)
     private Date updateDate;
@@ -128,18 +132,6 @@ public class Person implements JPAEntity<Long> {
 
     public void setVersion(Long version) {
         this.version = version;
-    }
-
-    @PrePersist
-    public void prePersist() {
-        if (null == createDate) {
-            createDate = new Date();
-        }
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        updateDate = new Date();
     }
 }
 
