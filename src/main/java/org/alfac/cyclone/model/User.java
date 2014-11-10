@@ -1,6 +1,9 @@
 package org.alfac.cyclone.model;
 
+import org.alfac.cyclone.common.persistence.JPAEntity;
+
 import javax.persistence.*;
+import java.util.Date;
 
 import static org.alfac.cyclone.model.Constants.UserTable;
 
@@ -17,7 +20,7 @@ import static org.alfac.cyclone.model.Constants.UserTable;
 
 @Entity
 @Table(name = UserTable.TABLE_NAME)
-public class User {
+public class User implements JPAEntity<Long> {
 
     @Id
     @Column(name = UserTable.ColumnName.USER_ID, nullable = false)
@@ -30,6 +33,19 @@ public class User {
     @Column(name = UserTable.ColumnName.PASSWORD, length = UserTable.ColumnLength.PASSWORD, nullable = false)
     private String password;
 
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = UserTable.ColumnName.PERSON_ID, nullable = false)
+    private Person person;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = UserTable.ColumnName.CREATE_DATE, nullable = false, insertable = true, updatable = false)
+    private Date createDate;
+
+    @Version
+    @Column(name = UserTable.ColumnName.VERSION, nullable = false)
+    private Long version;
+
+    @Override
     public Long getId() {
         return id;
     }
@@ -52,5 +68,36 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (null == createDate) {
+            createDate = new Date();
+        }
     }
 }
