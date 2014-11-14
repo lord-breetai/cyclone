@@ -1,4 +1,6 @@
-package org.alfac.cyclone.common.persistence;
+package org.alfac.cyclone.persistence;
+
+import org.alfac.cyclone.persistence.context.RequestScopedEntityManager;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
@@ -12,21 +14,21 @@ import javax.persistence.PersistenceUnit;
  * @author Ivan
  */
 @ApplicationScoped
-public class PersistenceManagerProducer {
+public class EntityManagerProducer {
 
     @PersistenceUnit
     private EntityManagerFactory factory;
 
     @Produces
     @RequestScoped
-    @DefaultEntityManager
-    public EntityManager create() {
+    @RequestScopedEntityManager
+    public EntityManager createRequestScopedInstance() {
         return factory.createEntityManager();
     }
 
-    public void dispose(@Disposes @DefaultEntityManager EntityManager entityManager) {
-        if (entityManager.isOpen()) {
-            entityManager.close();
+    public void disposeRequestScopedInstance(@Disposes @RequestScopedEntityManager EntityManager instance) {
+        if (instance.isOpen()) {
+            instance.close();
         }
     }
 }

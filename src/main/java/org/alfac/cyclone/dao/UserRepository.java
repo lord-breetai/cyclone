@@ -1,14 +1,14 @@
 package org.alfac.cyclone.dao;
 
-import org.alfac.cyclone.common.persistence.DefaultEntityManagerResolver;
 import org.alfac.cyclone.model.User;
+import org.alfac.cyclone.persistence.context.RequestScopedEntityManagerResolver;
 import org.apache.deltaspike.data.api.*;
 
 /**
  * @author Ivan
  */
 @Repository
-@EntityManagerConfig(entityManagerResolver = DefaultEntityManagerResolver.class)
+@EntityManagerConfig(entityManagerResolver = RequestScopedEntityManagerResolver.class)
 public abstract class UserRepository extends AbstractEntityRepository<User, Long> {
 
     @Query(value = "select user from User user where user.userName = :userName and user.password = :password", singleResult = SingleResultType.OPTIONAL)

@@ -1,4 +1,4 @@
-package org.alfac.cyclone.common.persistence;
+package org.alfac.cyclone.persistence.context;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Documented;
@@ -11,10 +11,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * @author Ivan
  */
-
 @Target({TYPE, METHOD, PARAMETER, FIELD})
 @Retention(RUNTIME)
 @Documented
 @Qualifier
-public @interface DefaultEntityManager {
+public @interface RequestScopedEntityManager {
 }

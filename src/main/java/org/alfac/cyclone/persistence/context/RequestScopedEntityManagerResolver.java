@@ -1,4 +1,4 @@
-package org.alfac.cyclone.common.persistence;
+package org.alfac.cyclone.persistence.context;
 
 import org.apache.deltaspike.data.api.EntityManagerResolver;
 
@@ -8,10 +8,10 @@ import javax.persistence.EntityManager;
 /**
  * @author Ivan
  */
-public class DefaultEntityManagerResolver implements EntityManagerResolver {
+public class RequestScopedEntityManagerResolver implements EntityManagerResolver {
 
     @Inject
-    @DefaultEntityManager
+    @RequestScopedEntityManager
     private EntityManager entityManager;
 
     @Override
