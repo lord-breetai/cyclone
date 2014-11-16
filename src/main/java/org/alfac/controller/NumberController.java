@@ -1,6 +1,5 @@
 package org.alfac.controller;
 
-import org.alfac.cyclone.service.UserService;
 import org.alfac.service.NumberService;
 
 import javax.enterprise.context.RequestScoped;
@@ -19,12 +18,7 @@ public class NumberController {
     @Inject
     private NumberService service;
 
-    @Inject
-    private UserService userService;
-
-
     public Integer getValue() {
-        userService.logginUser("aaa", "bbb");
         if (null == value) {
             value = service.getValue();
         }
