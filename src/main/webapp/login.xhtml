@@ -18,15 +18,50 @@
             <div id="main">
                 <div class="content-section">
                     <div class="content-block">
-                        <p:panel header="hola">
+                        <h:form id="loginFormId" prependId="false">
+                            <div style="width: 450px; margin-left: auto; margin-right: auto; margin-bottom: 50px;">
+                                <p:panel id="loginPanelId" header="#{messages['login.panel.title']}">
+                                    <p:focus context="loginPanelId"/>
 
-                        </p:panel>
+                                    <h:panelGrid columns="2" styleClass="form-panel"
+                                                 columnClasses="form-label width25Pct, form-field">
+                                        <h:outputLabel value="#{messages['ApplicationIdentity.userName']}"
+                                                       for="userNameId"/>
+                                        <p:outputPanel>
+                                            <p:inputText id="userNameId" value="#{applicationIdentity.userName}"
+                                                         styleClass="input"
+                                                         required="true"/>
+                                            <p:message for="userNameId" display="text"/>
+                                        </p:outputPanel>
+
+
+                                        <h:outputLabel value="#{messages['ApplicationIdentity.password']}"
+                                                       for="passwordId"/>
+                                        <p:outputPanel>
+                                            <p:password id="passwordId" value="#{applicationIdentity.password}"
+                                                        styleClass="input"
+                                                        required="true"/>
+                                            <p:message for="passwordId" display="text"/>
+                                        </p:outputPanel>
+
+                                    </h:panelGrid>
+
+                                </p:panel>
+
+                                <div class="buttons">
+                                    <p:commandButton id="loginButtonId"
+                                                     action="#{applicationIdentity.login}"
+                                                     value="#{messages['login.button.logon']}" update="loginPanelId"/>
+                                </div>
+                            </div>
+                        </h:form>
                     </div>
                 </div>
             </div>
         </div>
 
         <h:outputStylesheet name="cyclone.css" library="css"/>
+        <h:outputStylesheet name="default.css" library="css"/>
     </h:body>
 </f:view>
 </html>

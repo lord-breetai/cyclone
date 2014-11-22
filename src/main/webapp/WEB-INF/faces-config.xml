@@ -15,4 +15,19 @@
             <supported-locale>es</supported-locale>
         </locale-config>
     </application>
+
+
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Success</from-outcome>
+            <to-view-id>/home/main.xhtml</to-view-id>
+            <redirect>
+                <view-param>
+                    <name>faces-redirect</name>
+                    <value>true</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

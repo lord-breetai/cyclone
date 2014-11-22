@@ -1,0 +1,18 @@
+/**
+* Font size for all primefaces components
+**/
+.ui-widget {
+    font-size: 12px !important;
+}
+
+/**
+* inputField component widget customizations
+**/
+.ui-inputfield {
+    padding: 2px !important;
+}
+
+.ui-widget-content .ui-inputfield {
+    font-weight: normal !important;
+    font-size: 95% !important;
+}
