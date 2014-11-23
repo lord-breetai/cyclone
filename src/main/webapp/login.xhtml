@@ -18,22 +18,19 @@
         <div class="mainContent">
             <div class="contentSection">
 
-
                 <h:form id="loginFormId" prependId="false">
                     <div style="width: 450px; margin-left: auto; margin-right: auto; margin-bottom: 50px;">
                         <p:panel id="loginPanelId" header="#{messages['login.panel.title']}">
                             <p:focus context="loginPanelId"/>
 
                             <h:panelGrid columns="1" styleClass="formGrid">
-                                <j:formRow label="#{messages['ApplicationIdentity.userName']}"
-                                           labelClass="width25Pct" required="true">
+                                <j:formRow label="#{messages['ApplicationIdentity.userName']}" required="true">
                                     <p:inputText id="userNameId" value="#{applicationIdentity.userName}"
                                                  styleClass="input"
                                                  required="true"/>
                                     <p:message for="userNameId" display="text"/>
                                 </j:formRow>
-                                <j:formRow label="#{messages['ApplicationIdentity.password']}"
-                                           labelClass="width25Pct" required="true">
+                                <j:formRow label="#{messages['ApplicationIdentity.password']}" required="true">
                                     <p:password id="passwordId" value="#{applicationIdentity.password}"
                                                 styleClass="input"
                                                 required="true"/>
