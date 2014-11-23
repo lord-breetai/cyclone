@@ -1,6 +1,4 @@
-/*
- * FormRow component javascript
- * */
+
 UICyclone.formRow = {
     putForAttrLabel: function (id) {
         var labelId = id + "_label",

@@ -1,9 +1,8 @@
-/*
-FormRow component CSS styles
-*/
+
 .formRow {
     width: 100%;
     border: 0 none;
+    border-collapse: collapse;
 }
 
 .formRowLabel {

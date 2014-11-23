@@ -4,8 +4,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:j="http://xmlns.jcp.org/jsf/composite/components"
-        >
+      xmlns:j="http://xmlns.jcp.org/jsf/composite/components">
 
 <f:view contentType="text/html">
     <h:head>
@@ -25,7 +24,7 @@
                         <p:panel id="loginPanelId" header="#{messages['login.panel.title']}">
                             <p:focus context="loginPanelId"/>
 
-                            <h:panelGrid id="panelGridLId" columns="1" styleClass="form-panel">
+                            <h:panelGrid columns="1" styleClass="formGrid">
                                 <j:formRow label="#{messages['ApplicationIdentity.userName']}"
                                            labelClass="width25Pct" required="true">
                                     <p:inputText id="userNameId" value="#{applicationIdentity.userName}"

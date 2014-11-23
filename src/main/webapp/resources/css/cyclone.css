@@ -25,31 +25,15 @@ body {
 
 }
 
-.form-panel {
+.formGrid {
 }
 
-.form-label {
-
-}
-
-.form-field {
-
-}
-
-TABLE.form-panel {
+table.formGrid {
     width: 100%;
-    border: 0px none;
+    border: 0 none;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
-
-TD.form-label {
-    text-align: right !important;
-    padding-right: 2px;
-}
-
-TD.form-field {
-    text-align: left !important;
-}
-
 
 .buttons {
     text-align: center;
