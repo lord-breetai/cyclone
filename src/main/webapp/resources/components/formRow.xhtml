@@ -1,11 +1,40 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:cc="http://xmlns.jcp.org/jsf/composite">
-    <cc:interface>
+                xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <cc:interface componentType="cyclone.faces.FormElement">
         <cc:attribute name="label" required="true"/>
+        <cc:attribute name="labelClass" required="false"/>
+        <cc:attribute name="contentClass" required="false"/>
+        <cc:attribute name="required" type="java.lang.Boolean" default="false"/>
     </cc:interface>
 
     <cc:implementation>
+        <table jsf:id="formRow" class="formElement">
+            <tr>
+                <td class="#{cc.labelClass}">
+                    <label id="#{cc.clientId}_label">
+                        <h:outputText value="#{cc.attrs.label}#{cc.required ? ' *' : ''}"/>
+                    </label>
+                </td>
+                <td id="#{cc.clientId}_content" class="#{cc.contentClass}">
+                    <cc:insertChildren/>
+                </td>
+            </tr>
+        </table>
+        <script type="text/javascript">
 
+            $(function () {
+
+                var label = $(PrimeFaces.escapeClientId('#{cc.clientId}_label'));
+                var dataCell = $(PrimeFaces.escapeClientId('#{cc.clientId}_content'));
+                var firstInput = dataCell.find(':input:enabled:first');
+
+                if (firstInput) {
+                    label.prop('for', firstInput.prop('id'));
+                }
+            });
+        </script>
     </cc:implementation>
 </ui:composition>

@@ -1,0 +1,14 @@
+/*
+ login.xhtml css stylesheet
+*/
+
+.mainContent {
+    width: 100%;
+    overflow: hidden;
+}
+
+.contentSection {
+    width: 950px;
+    padding: 37px 19px 23px 0px;
+    margin: 0px auto;
+}

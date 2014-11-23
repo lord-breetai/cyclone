@@ -1,5 +1,5 @@
 body {
-    margin: 0px;
+    margin: 1px;
     color: #636363;
     background: none repeat scroll 0% 0% #FFF;
     min-width: 998px;
@@ -7,7 +7,7 @@ body {
 }
 
 /**
-*  MainLayout content selectors
+ mainTemplate.xhtml selectors
 **/
 .mainLayoutWestContent {
 
@@ -25,16 +25,6 @@ body {
 
 }
 
-#wrapper {
-    width: 100%;
-    overflow: hidden;
-}
-
-#main {
-    width: 100%;
-    overflow: hidden;
-}
-
 .form-panel {
 }
 
@@ -48,7 +38,7 @@ body {
 
 TABLE.form-panel {
     width: 100%;
-    border: none;
+    border: 0px none;
 }
 
 TD.form-label {
@@ -60,21 +50,6 @@ TD.form-field {
     text-align: left !important;
 }
 
-.content-section {
-    width: 958px;
-    padding: 37px 19px 23px 0px;
-    margin: 0px auto;
-}
-
-.content-block {
-    font: 14px "Trebuchet MS", "Times New Roman", Times, serif;
-}
-
-.content-block h3 {
-    margin: 20px 20px 8px 0px;
-    font: 15px "Trebuchet MS", "Times New Roman", Times, serif;
-    color: #004A80;
-}
 
 .buttons {
     text-align: center;
