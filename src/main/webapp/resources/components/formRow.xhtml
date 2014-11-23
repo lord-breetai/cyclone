@@ -3,7 +3,7 @@
                 xmlns:cc="http://xmlns.jcp.org/jsf/composite"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:jsf="http://xmlns.jcp.org/jsf">
-    <cc:interface componentType="cyclone.faces.FormElement">
+    <cc:interface componentType="cyclone.faces.FormRow">
         <cc:attribute name="label" required="true"/>
         <cc:attribute name="labelClass" required="false"/>
         <cc:attribute name="contentClass" required="false"/>
@@ -11,7 +11,7 @@
     </cc:interface>
 
     <cc:implementation>
-        <table jsf:id="formRow" class="formElement">
+        <table jsf:id="formRow" class="formRow">
             <tr>
                 <td class="#{cc.labelClass}">
                     <label id="#{cc.clientId}_label">
@@ -24,16 +24,8 @@
             </tr>
         </table>
         <script type="text/javascript">
-
             $(function () {
-
-                var label = $(PrimeFaces.escapeClientId('#{cc.clientId}_label'));
-                var dataCell = $(PrimeFaces.escapeClientId('#{cc.clientId}_content'));
-                var firstInput = dataCell.find(':input:enabled:first');
-
-                if (firstInput) {
-                    label.prop('for', firstInput.prop('id'));
-                }
+                UICyclone.formRow.putForAttrLabel('#{cc.clientId}');
             });
         </script>
     </cc:implementation>

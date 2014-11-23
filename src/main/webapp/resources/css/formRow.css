@@ -1,0 +1,21 @@
+/*
+FormRow component CSS styles
+*/
+.formRow {
+    width: 100%;
+    border: 0 none;
+}
+
+.formRowLabel {
+    text-align: right !important;
+    vertical-align: text-top !important;
+    padding-right: 2px;
+}
+
+.formRowLabelWidth {
+    width: 25%;
+}
+
+.formRowContent {
+    text-align: left !important;
+}
