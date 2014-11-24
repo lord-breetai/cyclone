@@ -2,6 +2,7 @@ package org.alfac.cyclone.security;
 
 import org.alfac.cyclone.model.User;
 import org.alfac.cyclone.service.UserSecurityService;
+import org.alfac.cyclone.utils.Sha256Util;
 import org.apache.log4j.Logger;
 
 import javax.enterprise.context.RequestScoped;
@@ -29,13 +30,12 @@ public class ApplicationIdentity {
     private UserSecurityService securityService;
 
     public String login() {
-
-        User user = securityService.findUser(userName, password);
+        User user = securityService.findUser(userName, Sha256Util.getSHA256Hex(password));
 
         if (null != user) {
             userLoginEvent.fire(UserLoginEvent.getInstance(user));
 
-            LOG.info("Welcome User [" + userName + "]");
+            LOG.info("Welcome User [" + user.getUserName() + "]");
             return "Success";
         }
 
