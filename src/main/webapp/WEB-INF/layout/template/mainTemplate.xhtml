@@ -15,7 +15,7 @@
 
     <h:body>
         <p:layout widgetVar="mainLayout" fullPage="true">
-            <p:layoutUnit position="north">
+            <p:layoutUnit position="north" styleClass="mainLayoutNorth">
                 <ui:include src="/WEB-INF/layout/include/header.xhtml"/>
             </p:layoutUnit>
 
@@ -23,13 +23,13 @@
                 <ui:include src="/WEB-INF/layout/include/footer.xhtml"/>
             </p:layoutUnit>
 
-            <p:layoutUnit position="west">
+            <p:layoutUnit position="west" size="200" styleClass="mainLayoutWest">
                 <p:outputPanel styleClass="mainLayoutWestContent">
                     <ui:insert name="westContent"/>
                 </p:outputPanel>
             </p:layoutUnit>
 
-            <p:layoutUnit position="center">
+            <p:layoutUnit position="center" styleClass="mainLayoutCenter">
                 <p:outputPanel styleClass="mainLayoutCenterContent">
                     <ui:insert name="centerContent"/>
                 </p:outputPanel>

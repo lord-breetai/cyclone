@@ -21,7 +21,7 @@
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>Success</from-outcome>
-            <to-view-id>/home/main.xhtml</to-view-id>
+            <to-view-id>/student/home.xhtml</to-view-id>
             <redirect>
                 <view-param>
                     <name>faces-redirect</name>

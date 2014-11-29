@@ -6,7 +6,7 @@
 }
 
 /**
-* inputField component widget customizations
+* inputField component customizations
 **/
 .ui-inputfield {
     padding: 2px !important;
@@ -15,4 +15,15 @@
 .ui-widget-content .ui-inputfield {
     font-weight: normal !important;
     font-size: 95% !important;
+}
+
+/**
+* tabMenu component customizations
+**/
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+    margin: 0.3em 0.4em 2px 0;
+}
+
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem a {
+    padding: 0.3em 4em;
 }
