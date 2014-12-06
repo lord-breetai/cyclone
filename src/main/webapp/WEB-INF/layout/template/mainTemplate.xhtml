@@ -15,8 +15,16 @@
 
     <h:body>
         <p:layout widgetVar="mainLayout" fullPage="true">
-            <p:layoutUnit position="north" styleClass="mainLayoutNorth">
-                <ui:include src="/WEB-INF/layout/include/header.xhtml"/>
+            <p:layoutUnit position="north" maxSize="70" styleClass="mainLayoutNorth">
+                <p:layout>
+                    <p:layoutUnit position="center" styleClass="nestedLayoutUnit">
+                        <ui:include src="/WEB-INF/layout/include/header.xhtml"/>
+                    </p:layoutUnit>
+                    <p:layoutUnit position="south" styleClass="nestedLayoutUnit">
+                        <ui:include src="/WEB-INF/layout/include/mainMenu.xhtml"/>
+                    </p:layoutUnit>
+                </p:layout>
+
             </p:layoutUnit>
 
             <p:layoutUnit position="south">
@@ -24,15 +32,11 @@
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="200" styleClass="mainLayoutWest">
-                <p:outputPanel styleClass="mainLayoutWestContent">
-                    <ui:insert name="westContent"/>
-                </p:outputPanel>
+                <ui:insert name="westContent"/>
             </p:layoutUnit>
 
             <p:layoutUnit position="center" styleClass="mainLayoutCenter">
-                <p:outputPanel styleClass="mainLayoutCenterContent">
-                    <ui:insert name="centerContent"/>
-                </p:outputPanel>
+                <ui:insert name="centerContent"/>
             </p:layoutUnit>
         </p:layout>
 

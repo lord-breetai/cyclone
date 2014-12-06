@@ -1,5 +1,43 @@
 <div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:p="http://primefaces.org/ui"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
-        >
-    <h:outputText value="degrees"/>
+     class="container">
+
+    <p:layout>
+        <p:layoutUnit position="north"
+                      header="#{messages['degrees.header.title']}"
+                      styleClass="headerLayoutUnit">
+            <h:form prependId="false">
+                <p:toolbar>
+                    <f:facet name="left">
+                        <p:outputLabel value="#{messages['degrees.column.name']}" for="degreeNameId"/>
+                        <p:spacer width="2"/>
+                        <p:inputText id="degreeNameId" value="#{degreeDataModel.degreeName}"/>
+                        <p:spacer width="4"/>
+                        <p:commandButton actionListener="#{degreeDataModel.search}"
+                                         ajax="true" update=":degreeDataTableId"
+                                         process="@form"
+                                         value="#{messages['button.label.search']}"
+                                         icon="ui-icon-search"/>
+                    </f:facet>
+                </p:toolbar>
+            </h:form>
+        </p:layoutUnit>
+        <p:layoutUnit position="center">
+            <p:outputPanel id="degreeDataTableId">
+                <p:dataTable var="degree" value="#{degreeDataModel}"
+                             paginator="true"
+                             rows="10"
+                             lazy="true"
+                             paginatorTemplate="#{messages['dataTable.paginatorTemplate']}"
+                             paginatorPosition="bottom">
+                    <p:column headerText="#{messages['degrees.column.name']}"
+                              sortBy="#{field.degree.name}">
+                        <h:outputText value="#{degree.name}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:outputPanel>
+        </p:layoutUnit>
+    </p:layout>
 </div>

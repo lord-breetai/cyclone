@@ -1,9 +1,9 @@
 package org.alfac.cyclone.web.ui;
 
+import org.alfac.cyclone.web.faces.utils.JSFUtil;
 import org.apache.log4j.Logger;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.util.LinkedList;
 
@@ -48,6 +48,6 @@ public class MainMenu {
     }
 
     private String loadSelectedViewId() {
-        return FacesContext.getCurrentInstance().getViewRoot().getViewId();
+        return JSFUtil.getFacesContext().getViewRoot().getViewId();
     }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:layout onResize="refreshPanelTemplateHeight()">
+        <p:layoutUnit position="center" styleClass="nestedLayoutUnit">
+            <p:outputPanel styleClass="panelTemplateContent">
+                <ui:insert name="panelContent"/>
+            </p:outputPanel>
+        </p:layoutUnit>
+    </p:layout>
+
+    <script type="text/javascript">
+        function refreshPanelTemplateHeight() {
+            var outputPanel = $('.panelTemplateContent');
+
+            outputPanel.height(outputPanel.parent().height());
+        }
+    </script>
+</ui:composition>

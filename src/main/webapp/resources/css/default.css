@@ -1,29 +1,26 @@
-/**
+/*
 * Font size for all primefaces components
-**/
+*/
 .ui-widget {
-    font-size: 12px !important;
+    font-size: 11px !important;
+    border-radius: 0 !important;
 }
 
-/**
+.ui-corner-all {
+    border-radius: 0 !important;
+}
+
+/*
 * inputField component customizations
-**/
+*/
 .ui-inputfield {
     padding: 2px !important;
 }
 
-.ui-widget-content .ui-inputfield {
-    font-weight: normal !important;
-    font-size: 95% !important;
-}
-
-/**
-* tabMenu component customizations
-**/
-.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
-    margin: 0.3em 0.4em 2px 0;
-}
-
-.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem a {
-    padding: 0.3em 4em;
+/*
+* layout component customizations
+*/
+.ui-layout-center .ui-layout-resizer {
+    border: 1px solid #0C0C34 !important;
+    background-color: #0C0C34 !important;
 }

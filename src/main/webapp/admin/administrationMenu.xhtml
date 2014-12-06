@@ -12,14 +12,16 @@
                     <p:menuitem value="#{messages['administrationMenu.menuItem.countries']}"
                                 actionListener="#{administrationMenu.loadContent}"
                                 ajax="true"
-                                update="@(.mainLayoutCenterContent)">
+                                update="@(.panelTemplateContent)"
+                                oncomplete="refreshPanelTemplateHeight()">
                         <f:param name="VIEW_ID_CODE" value="COUNTRIES"/>
                     </p:menuitem>
 
                     <p:menuitem value="#{messages['administrationMenu.menuItem.degrees']}"
                                 actionListener="#{administrationMenu.loadContent}"
                                 ajax="true"
-                                update="@(.mainLayoutCenterContent)">
+                                update="@(.panelTemplateContent)"
+                                oncomplete="refreshPanelTemplateHeight()">
                         <f:param name="VIEW_ID_CODE" value="DEGREES"/>
                     </p:menuitem>
                 </p:submenu>
@@ -27,6 +29,10 @@
         </h:form>
     </ui:define>
     <ui:define name="centerContent">
-        <ui:include src="#{administrationMenu.goToView()}"/>
+        <ui:decorate template="/WEB-INF/layout/template/panelTemplate.xhtml">
+            <ui:define name="panelContent">
+                <ui:include src="#{administrationMenu.goToView()}"/>
+            </ui:define>
+        </ui:decorate>
     </ui:define>
 </ui:composition>

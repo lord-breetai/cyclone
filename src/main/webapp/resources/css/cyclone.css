@@ -1,51 +1,59 @@
 body {
-    margin: 1px;
-    color: #636363;
-    background: none repeat scroll 0% 0% #FFF;
-    min-width: 998px;
-    font: 12px/16px "Trebuchet MS", "Times New Roman", Times, serif;
+    margin: 1px !important;
+    padding: 0 !important;
+    min-width: 1000px !important;
+    background-color: #0C0C34;
 }
 
-/**
- mainTemplate.xhtml selectors
-**/
+/*
+* panelTemplate.xhtml
+*/
+.panelTemplateContent {
+}
+
+/*
+* mainTemplate.xhtml selectors
+*/
 .mainLayoutNorth {
     border: 0 none !important;
-    padding: 0 0 0 0 !important;
+    padding: 0 !important;
 }
 
-.mainLayoutNorth, .ui-layout-unit .ui-layout-unit-content {
-    overflow: hidden;
-}
-
-.mainLayoutNorthContent {
-    width: 100%;
-    border: 0 none;
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-
-.mainLayoutNorthContentTop {
-}
-
-.mainLayoutNorthContentBottom {
+.mainLayoutNorth .ui-layout-unit-content {
+    overflow: visible;
 }
 
 .mainLayoutCenter {
-}
-
-.mainLayoutCenterContent {
+    border: 0 none !important;
+    padding: 0 !important;
 }
 
 .mainLayoutWest {
     border: 0 none !important;
-}
-
-.mainLayoutWestContent {
+    padding: 0 !important;
 }
 
 .mainLayoutFooterContent {
 
+}
+
+.headerLayoutUnit {
+    border: 0 none !important;
+    padding: 0.1em 0.1em 0 0.1em !important;
+}
+
+.headerLayoutUnit .ui-layout-unit-content {
+    overflow: visible;
+}
+
+.nestedLayoutUnit {
+    border: 0 none !important;
+    padding: 0 !important;
+}
+
+.container {
+    height: 100% !important;
+    width: 100% !important;
 }
 
 .formGrid {
