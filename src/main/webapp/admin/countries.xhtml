@@ -26,17 +26,31 @@
         </p:layoutUnit>
         <p:layoutUnit position="center">
             <p:outputPanel id="countryDataTableId">
-                <p:dataTable var="country" value="#{countryDataModel}"
-                             paginator="true"
-                             rows="10"
-                             lazy="true"
-                             paginatorTemplate="#{messages['dataTable.paginatorTemplate']}"
-                             paginatorPosition="bottom">
-                    <p:column headerText="#{messages['countries.column.name']}"
-                              sortBy="#{field.country.name}">
-                        <h:outputText value="#{country.name}"/>
-                    </p:column>
-                </p:dataTable>
+                <h:form prependId="false">
+                    <p:dataTable id="countryTableId" var="country" value="#{countryDataModel}"
+                                 selectionMode="single"
+                                 selection="#{countryController.instance}"
+                                 paginator="true"
+                                 rows="10"
+                                 lazy="true"
+                                 paginatorTemplate="#{messages['dataTable.paginatorTemplate']}"
+                                 paginatorPosition="bottom">
+                        <p:ajax event="rowSelect" listener="#{countryController.onSelect}"/>
+
+                        <p:column headerText="#{messages['countries.column.name']}"
+                                  sortBy="#{field.country.name}"
+                                  styleClass="width70Pct">
+                            <h:outputText value="#{country.name}"/>
+                        </p:column>
+                        <p:column headerText="#{messages['countries.column.createDate']}"
+                                  sortBy="#{field.country.createDate}"
+                                  styleClass="width30Pct">
+                            <h:outputText value="#{country.createDate}">
+                                <f:convertDateTime pattern="#{messages['Pattern.datetime']}"/>
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
             </p:outputPanel>
         </p:layoutUnit>
     </p:layout>

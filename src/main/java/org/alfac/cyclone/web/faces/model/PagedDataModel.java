@@ -19,8 +19,6 @@ public abstract class PagedDataModel<T extends JPAEntity, U> extends BaseDataMod
 
     private Map<String, T> dataCache;
 
-    private Map<String, Integer> dataIndexCache;
-
     @Override
     public List<T> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
         initialize();
@@ -29,15 +27,11 @@ public abstract class PagedDataModel<T extends JPAEntity, U> extends BaseDataMod
         List<T> elements = queryResult.getResultList();
         setRowCount(queryResult.getTotalCount());
 
-        Integer dataIndex = 0;
         for (T element : elements) {
             String rowKey = encodeRowKey(element);
 
             if (!StringUtils.isEmpty(rowKey)) {
                 dataCache.put(rowKey, element);
-                dataIndexCache.put(rowKey, dataIndex);
-
-                dataIndex++;
             }
         }
 
@@ -63,7 +57,8 @@ public abstract class PagedDataModel<T extends JPAEntity, U> extends BaseDataMod
     }
 
     private void initialize() {
-        dataCache = new HashMap<>();
-        dataIndexCache = new HashMap<>();
+        if (null == dataCache) {
+            dataCache = new HashMap<>();
+        }
     }
 }
