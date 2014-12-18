@@ -2,8 +2,8 @@
      xmlns:f="http://xmlns.jcp.org/jsf/core"
      xmlns:p="http://primefaces.org/ui"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
      class="container">
-
     <p:layout>
         <p:layoutUnit position="north"
                       header="#{messages['countries.header.title']}"
@@ -16,16 +16,22 @@
                         <p:inputText id="countryNameId" value="#{countryDataModel.countryName}"/>
                         <p:spacer width="4"/>
                         <p:commandButton actionListener="#{countryDataModel.search}"
-                                         ajax="true" update=":countryDataTableId"
+                                         ajax="true"
+                                         update=":countryDataTableId"
                                          process="@form"
-                                         value="#{messages['button.label.search']}"
                                          icon="ui-icon-search"/>
+                    </f:facet>
+                    <f:facet name="right">
+                        <p:commandButton action="#{countryController.initializeController}"
+                                         ajax="true"
+                                         value="#{messages['button.label.new']}"
+                                         oncomplete="PF('createCountryDialog').show()"/>
                     </f:facet>
                 </p:toolbar>
             </h:form>
         </p:layoutUnit>
-        <p:layoutUnit position="center">
-            <p:outputPanel id="countryDataTableId">
+        <p:layoutUnit position="center" styleClass="contentLayoutUnit">
+            <p:outputPanel id="countryDataTableId" styleClass="container" layout="block">
                 <h:form prependId="false">
                     <p:dataTable id="countryTableId" var="country" value="#{countryDataModel}"
                                  selectionMode="single"
@@ -54,4 +60,36 @@
             </p:outputPanel>
         </p:layoutUnit>
     </p:layout>
+
+    <p:dialog id="createCountryDialogId"
+              widgetVar="createCountryDialog"
+              header="#{messages['countryForm.title.new']}"
+              modal="true"
+              dynamic="true"
+              appendTo="@(body)"
+              width="390"
+              resizable="false">
+
+        <p:ajax event="close" update="createCountryDialogId" resetValues="true"/>
+        <h:form prependId="false">
+            <p:outputPanel id="countryFormPanelId">
+                <p:panel>
+                    <ui:include src="/admin/countryForm.xhtml"/>
+
+                    <p:focus context="countryFormPanelId"/>
+
+                    <div class="buttons">
+                        <p:commandButton action="#{countryController.createAction}"
+                                         ajax="true"
+                                         value="#{messages['button.label.save']}"
+                                         process="countryFormPanelId"
+                                         update="countryFormPanelId"
+                                         partialSubmit="true"/>
+                        <p:button value="#{messages['button.label.cancel']}"
+                                  onclick="PF('createCountryDialog').hide(); return false;"/>
+                    </div>
+                </p:panel>
+            </p:outputPanel>
+        </h:form>
+    </p:dialog>
 </div>

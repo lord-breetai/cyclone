@@ -4,7 +4,7 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <p:layout onResize="refreshPanelTemplateHeight()">
-        <p:layoutUnit position="center" styleClass="nestedLayoutUnit">
+        <p:layoutUnit position="center" styleClass="panelTemplateLayoutUnit">
             <p:outputPanel styleClass="panelTemplateContent">
                 <ui:insert name="panelContent"/>
             </p:outputPanel>
@@ -16,6 +16,7 @@
             var outputPanel = $('.panelTemplateContent');
 
             outputPanel.height(outputPanel.parent().height());
+            outputPanel.width(outputPanel.parent().width());
         }
     </script>
 </ui:composition>

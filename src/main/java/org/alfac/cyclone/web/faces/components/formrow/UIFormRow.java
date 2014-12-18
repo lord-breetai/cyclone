@@ -1,29 +1,22 @@
 package org.alfac.cyclone.web.faces.components.formrow;
 
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UINamingContainer;
 
 /**
  * @author Ivan
  */
-@ResourceDependencies({
-        @ResourceDependency(library = "js", name = "cyclone.js"),
-        @ResourceDependency(library = "css", name = "formRow.css"),
-        @ResourceDependency(library = "js", name = "formRow.js")
-})
 @FacesComponent(value = UIFormRow.COMPONENT_TYPE)
 public class UIFormRow extends UINamingContainer {
 
     public static final String COMPONENT_TYPE = "cyclone.faces.FormRow";
 
-    public void setRequired(boolean required) {
-        getStateHelper().put(PropertyKeys.required, required);
-    }
-
     public boolean isRequired() {
         return (Boolean) getStateHelper().eval(PropertyKeys.required, Boolean.FALSE);
+    }
+
+    public void setRequired(boolean required) {
+        getStateHelper().put(PropertyKeys.required, required);
     }
 
     public String getContentClass() {

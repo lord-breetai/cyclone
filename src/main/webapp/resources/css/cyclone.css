@@ -2,6 +2,7 @@ body {
     margin: 1px !important;
     padding: 0 !important;
     min-width: 1000px !important;
+    min-height: 600px !important;
     background-color: #0C0C34;
 }
 
@@ -9,6 +10,11 @@ body {
 * panelTemplate.xhtml
 */
 .panelTemplateContent {
+}
+
+.panelTemplateLayoutUnit {
+    border: 0 none !important;
+    padding: 0 !important;
 }
 
 /*
@@ -43,6 +49,16 @@ body {
 }
 
 .headerLayoutUnit .ui-layout-unit-content {
+    overflow: visible;
+}
+
+.contentLayoutUnit {
+    border: 0 none !important;
+    padding: 0.1em 0.1em 0 0.1em !important;
+    width: auto !important;
+}
+
+.contentLayoutUnit .ui-layout-unit-content {
     overflow: visible;
 }
 

@@ -23,4 +23,5 @@
 .ui-layout-center .ui-layout-resizer {
     border: 1px solid #0C0C34 !important;
     background-color: #0C0C34 !important;
+    width: 99.8% !important;
 }

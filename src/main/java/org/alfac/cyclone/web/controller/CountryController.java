@@ -3,6 +3,7 @@ package org.alfac.cyclone.web.controller;
 import org.alfac.cyclone.model.Country;
 import org.alfac.cyclone.service.CountryService;
 import org.apache.log4j.Logger;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import javax.faces.view.ViewScoped;
@@ -25,8 +26,19 @@ public class CountryController implements Serializable {
 
     private Country instance;
 
+    public void initializeController() {
+        instance = new Country();
+    }
+
     public void onSelect(SelectEvent event) {
-        setInstance(service.findCountry(((Country) event.getObject()).getId()));
+        instance = service.findCountry(((Country) event.getObject()).getId());
+    }
+
+    public void createAction() {
+        service.create(instance);
+
+        RequestContext.getCurrentInstance().execute("PF('createCountryDialog').hide()");
+        RequestContext.getCurrentInstance().update("countryDataTableId");
     }
 
     public Country getInstance() {

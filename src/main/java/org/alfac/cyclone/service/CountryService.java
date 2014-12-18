@@ -24,4 +24,8 @@ public class CountryService {
 
         return instance;
     }
+
+    public void create(Country instance) {
+        repository.save(instance);
+    }
 }
