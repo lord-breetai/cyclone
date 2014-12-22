@@ -1,6 +1,8 @@
 package org.alfac.cyclone.service;
 
 import org.alfac.cyclone.dao.CountryRepository;
+import org.alfac.cyclone.exception.DuplicatedEntryException;
+import org.alfac.cyclone.exception.EntryNotFoundException;
 import org.alfac.cyclone.model.Country;
 
 import javax.ejb.Stateless;
@@ -15,17 +17,22 @@ public class CountryService {
     @Inject
     private CountryRepository repository;
 
-    public Country findCountry(Long id) {
+    public Country findCountry(Long id) throws EntryNotFoundException {
         Country instance = repository.findBy(id);
 
         if (null == instance) {
-            //TODO: a exception must be throws
+            throw new EntryNotFoundException();
         }
 
         return instance;
     }
 
-    public void create(Country instance) {
-        repository.save(instance);
+    public Country create(Country instance) throws DuplicatedEntryException {
+        Long countryNameCounter = repository.countByCountryName(instance.getName());
+        if (countryNameCounter > 0) {
+            throw new DuplicatedEntryException();
+        }
+
+        return repository.save(instance);
     }
 }

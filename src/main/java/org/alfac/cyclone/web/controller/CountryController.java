@@ -1,9 +1,12 @@
 package org.alfac.cyclone.web.controller;
 
+import org.alfac.cyclone.exception.DuplicatedEntryException;
+import org.alfac.cyclone.framework.controller.action.annotation.Action;
+import org.alfac.cyclone.framework.controller.action.annotation.Exception;
+import org.alfac.cyclone.framework.controller.action.annotation.Success;
 import org.alfac.cyclone.model.Country;
 import org.alfac.cyclone.service.CountryService;
 import org.apache.log4j.Logger;
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import javax.faces.view.ViewScoped;
@@ -34,11 +37,18 @@ public class CountryController implements Serializable {
         instance = service.findCountry(((Country) event.getObject()).getId());
     }
 
+    @Action(onSuccess = @Success(
+            message = "CountryController.info.entrySavedMsg",
+            update = {"countryDataTableId"},
+            execute = {"PF('createCountryDialog').hide()"}
+    ),
+            onError = {
+                    @Exception(clazz = DuplicatedEntryException.class, message = "CountryController.error.duplicateEntryMsg")
+            })
     public void createAction() {
         service.create(instance);
 
-        RequestContext.getCurrentInstance().execute("PF('createCountryDialog').hide()");
-        RequestContext.getCurrentInstance().update("countryDataTableId");
+        initializeController();
     }
 
     public Country getInstance() {

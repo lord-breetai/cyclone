@@ -6,4 +6,7 @@
        <alternatives>
               <class>org.apache.deltaspike.jpa.impl.transaction.BeanManagedUserTransactionStrategy</class>
        </alternatives>
+       <interceptors>
+              <class>org.alfac.cyclone.framework.controller.action.ActionInterceptor</class>
+       </interceptors>
 </beans>
