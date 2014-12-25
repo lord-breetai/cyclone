@@ -4,8 +4,8 @@ import org.alfac.cyclone.exception.DuplicatedEntryException;
 import org.alfac.cyclone.framework.controller.action.annotation.Action;
 import org.alfac.cyclone.framework.controller.action.annotation.Exception;
 import org.alfac.cyclone.framework.controller.action.annotation.Success;
-import org.alfac.cyclone.model.Country;
-import org.alfac.cyclone.service.CountryService;
+import org.alfac.cyclone.model.Degree;
+import org.alfac.cyclone.service.DegreeService;
 import org.apache.log4j.Logger;
 import org.primefaces.event.SelectEvent;
 
@@ -19,45 +19,45 @@ import java.io.Serializable;
  */
 @Named
 @ViewScoped
-public class CountryController implements Serializable {
+public class DegreeController implements Serializable {
 
     @SuppressWarnings("unused")
-    private static final transient Logger LOG = Logger.getLogger(CountryController.class);
+    private static final transient Logger LOG = Logger.getLogger(DegreeController.class);
 
     @Inject
-    private CountryService service;
+    private DegreeService degreeService;
 
-    private Country instance;
+    private Degree instance;
 
     public void initializeController() {
-        instance = new Country();
+        instance = new Degree();
     }
 
     public void onSelect(SelectEvent event) {
-        instance = service.findCountry(((Country) event.getObject()).getId());
+        instance = degreeService.findDegree(((Degree) event.getObject()).getId());
     }
 
     @Action(
             onSuccess = @Success(
-                    message = "CountryController.info.entrySavedMsg",
-                    update = {"countryDataTableId"},
-                    execute = {"PF('createCountryDialog').hide()"}
+                    message = "DegreeController.info.entrySavedMsg",
+                    update = {"degreeDataTableId"},
+                    execute = {"PF('createDegreeDialog').hide()"}
             ),
             onError = {
-                    @Exception(clazz = DuplicatedEntryException.class, message = "CountryController.error.duplicateEntryMsg")
+                    @Exception(clazz = DuplicatedEntryException.class, message = "DegreeController.error.duplicateEntryMsg")
             }
     )
     public void createAction() {
-        service.create(instance);
+        degreeService.create(instance);
 
         initializeController();
     }
 
-    public Country getInstance() {
+    public Degree getInstance() {
         return instance;
     }
 
-    public void setInstance(Country instance) {
+    public void setInstance(Degree instance) {
         this.instance = instance;
     }
 }
