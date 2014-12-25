@@ -1,6 +1,6 @@
-package org.alfac.cyclone.persistence;
+package org.alfac.cyclone.framework.persistence;
 
-import org.alfac.cyclone.persistence.context.RequestScopedEntityManager;
+import org.alfac.cyclone.framework.persistence.context.RequestScopedEntityManager;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;

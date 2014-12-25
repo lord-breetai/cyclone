@@ -1,4 +1,4 @@
-package org.alfac.cyclone.persistence;
+package org.alfac.cyclone.framework.persistence;
 
 import java.io.Serializable;
 

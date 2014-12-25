@@ -1,6 +1,6 @@
 package org.alfac.cyclone.web.faces.model;
 
-import org.alfac.cyclone.persistence.context.RequestScopedEntityManager;
+import org.alfac.cyclone.framework.persistence.context.RequestScopedEntityManager;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

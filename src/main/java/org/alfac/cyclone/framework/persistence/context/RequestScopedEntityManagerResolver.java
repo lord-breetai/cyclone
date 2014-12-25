@@ -1,4 +1,4 @@
-package org.alfac.cyclone.persistence.context;
+package org.alfac.cyclone.framework.persistence.context;
 
 import org.apache.deltaspike.data.api.EntityManagerResolver;
 

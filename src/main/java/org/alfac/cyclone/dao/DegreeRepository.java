@@ -1,7 +1,7 @@
 package org.alfac.cyclone.dao;
 
+import org.alfac.cyclone.framework.persistence.context.RequestScopedEntityManagerResolver;
 import org.alfac.cyclone.model.Degree;
-import org.alfac.cyclone.persistence.context.RequestScopedEntityManagerResolver;
 import org.apache.deltaspike.data.api.AbstractEntityRepository;
 import org.apache.deltaspike.data.api.EntityManagerConfig;
 import org.apache.deltaspike.data.api.Repository;

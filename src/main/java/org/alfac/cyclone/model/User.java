@@ -1,6 +1,6 @@
 package org.alfac.cyclone.model;
 
-import org.alfac.cyclone.persistence.JPAEntity;
+import org.alfac.cyclone.framework.persistence.JPAEntity;
 import org.apache.deltaspike.data.api.audit.CreatedOn;
 
 import javax.persistence.*;

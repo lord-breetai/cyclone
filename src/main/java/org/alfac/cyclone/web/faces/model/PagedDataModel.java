@@ -1,6 +1,6 @@
 package org.alfac.cyclone.web.faces.model;
 
-import org.alfac.cyclone.persistence.JPAEntity;
+import org.alfac.cyclone.framework.persistence.JPAEntity;
 import org.apache.deltaspike.core.util.StringUtils;
 import org.apache.log4j.Logger;
 import org.primefaces.model.SortOrder;
