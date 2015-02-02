@@ -25,3 +25,10 @@
     background-color: #0C0C34 !important;
     width: 99.8% !important;
 }
+
+/*
+* fieldset component customizations
+*/
+.ui-fieldset, .ui-fieldset .ui-fieldset-legend {
+    padding: 0.1em 1em !important;
+}

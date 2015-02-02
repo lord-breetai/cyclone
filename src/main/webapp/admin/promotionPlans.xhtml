@@ -1,0 +1,95 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     class="container">
+    <p:layout>
+        <p:layoutUnit position="north"
+                      header="#{messages['promotionPlans.header.title']}"
+                      styleClass="headerLayoutUnit">
+            <h:form prependId="false">
+                <p:toolbar>
+                    <f:facet name="left">
+                        <p:outputLabel value="#{messages['promotionPlans.column.code']}" for="planCodeId"/>
+                        <p:spacer width="2"/>
+                        <p:inputText id="planCodeId" value="#{promotionPlanDataModel.promotionPlanCode}"/>
+                        <p:spacer width="4"/>
+                        <p:outputLabel value="#{messages['promotionPlans.column.name']}" for="planNameId"/>
+                        <p:spacer width="2"/>
+                        <p:inputText id="planNameId" value="#{promotionPlanDataModel.promotionPlanName}"/>
+                        <p:spacer width="4"/>
+                        <p:commandButton actionListener="#{promotionPlanDataModel.search}"
+                                         ajax="true"
+                                         update=":promotionPlanDataTableId"
+                                         process="@form"
+                                         icon="ui-icon-search"/>
+                    </f:facet>
+                    <f:facet name="right">
+                        <p:commandButton action="#{createPromotionPlanController.initializeController}"
+                                         ajax="true"
+                                         value="#{messages['button.label.new']}"
+                                         oncomplete="PF('createPromotionPlanDialog').show()"/>
+                    </f:facet>
+                </p:toolbar>
+            </h:form>
+        </p:layoutUnit>
+        <p:layoutUnit position="center" styleClass="contentLayoutUnit">
+            <p:outputPanel id="promotionPlanDataTableId" styleClass="container">
+                <h:form prependId="false">
+                    <p:dataTable id="promotionPlanTableId" var="promotionPlan" value="#{promotionPlanDataModel}"
+                                 paginator="true"
+                                 rows="10"
+                                 lazy="true"
+                                 paginatorTemplate="#{messages['dataTable.paginatorTemplate']}"
+                                 paginatorPosition="bottom">
+
+                        <p:column headerText="#{messages['promotionPlans.column.code']}"
+                                  sortBy="#{field.promotionPlan.code}"
+                                  styleClass="width40Pct">
+                            <h:outputText value="#{promotionPlan.code}"/>
+                        </p:column>
+                        <p:column headerText="#{messages['promotionPlans.column.name']}"
+                                  sortBy="#{field.promotionPlan.name}"
+                                  styleClass="width40Pct">
+                            <h:outputText value="#{promotionPlan.name}"/>
+                        </p:column>
+                        <p:column headerText="#{messages['promotionPlans.column.createDate']}"
+                                  sortBy="#{field.promotionPlan.createDate}"
+                                  styleClass="width20Pct">
+                            <h:outputText value="#{promotionPlan.createDate}">
+                                <f:convertDateTime pattern="#{messages['Pattern.datetime']}"/>
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:outputPanel>
+        </p:layoutUnit>
+    </p:layout>
+
+    <p:dialog id="createPromotionPlanDialogId"
+              widgetVar="createPromotionPlanDialog"
+              header="#{messages['createPromotionPlanForm.title.new']}"
+              modal="true"
+              dynamic="true"
+              appendTo="@(body)"
+              width="620"
+              resizable="false">
+        <p:ajax event="close" update="createPromotionPlanDialogId" resetValues="true"/>
+
+        <h:form prependId="false">
+            <p:outputPanel id="createPromotionPlanFormPanelId">
+                <p:panel>
+                    <ui:include src="/admin/createPromotionPlanForm.xhtml"/>
+                    <p:focus context="createPromotionPlanFormPanelId"/>
+
+                    <div class="buttons">
+                        <p:button value="#{messages['button.label.cancel']}"
+                                  onclick="PF('createPromotionPlanDialog').hide(); return false;"/>
+                    </div>
+                </p:panel>
+            </p:outputPanel>
+        </h:form>
+    </p:dialog>
+
+</div>

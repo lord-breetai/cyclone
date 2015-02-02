@@ -22,7 +22,8 @@ public class AdministrationMenu implements Serializable {
     private enum MenuItem {
         HOME("/admin/home.xhtml"),
         COUNTRIES("/admin/countries.xhtml"),
-        DEGREES("/admin/degrees.xhtml");
+        DEGREES("/admin/degrees.xhtml"),
+        PROMOTION_PLANS("/admin/promotionPlans.xhtml");
 
         private String viewId;
 

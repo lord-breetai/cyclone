@@ -25,6 +25,15 @@
                         <f:param name="VIEW_ID_CODE" value="DEGREES"/>
                     </p:menuitem>
                 </p:submenu>
+                <p:submenu label="#{messages['administrationMenu.subMenu.academic']}">
+                    <p:menuitem value="#{messages['administrationMenu.menuItem.promotionPlans']}"
+                                actionListener="#{administrationMenu.loadContent}"
+                                ajax="true"
+                                update="@(.panelTemplateContent)"
+                                oncomplete="refreshPanelTemplateHeight()">
+                        <f:param name="VIEW_ID_CODE" value="PROMOTION_PLANS"/>
+                    </p:menuitem>
+                </p:submenu>
             </p:panelMenu>
         </h:form>
     </ui:define>

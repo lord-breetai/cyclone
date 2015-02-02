@@ -28,6 +28,8 @@ public final class Constants {
 
             public static final String CODE = "code";
 
+            public static final String NAME = "name";
+
             public static final String CREATE_DATE = "createdate";
 
             public static final String UPDATE_DATE = "updatedate";
@@ -37,6 +39,8 @@ public final class Constants {
 
         public static class ColumnLength {
             public static final int CODE = 50;
+
+            public static final int NAME = 100;
         }
     }
 

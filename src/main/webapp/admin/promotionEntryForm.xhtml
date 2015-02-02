@@ -1,0 +1,59 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:j="http://xmlns.jcp.org/jsf/composite/components"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     class="container">
+
+    <h:panelGrid columns="1" styleClass="formGrid">
+        <j:formRow label="#{messages['promotionEntryForm.sourceDegree']}"
+                   required="true">
+            <p:selectOneMenu id="sourceDegreeId"
+                             value="#{promotionEntryController.sourceDegreeId}"
+                             styleClass="selectOne"
+                             required="true">
+                <p:ajax event="change" update="@(.targetDegreeField)"
+                        listener="#{promotionEntryController.reloadTargetDegrees}"
+                        process="@this"/>
+                <f:selectItem itemLabel="#{messages['selectItem.label.selectOne']}" itemValue=""/>
+                <f:selectItems value="#{promotionEntryController.sourceDegrees}"
+                               var="element"
+                               itemValue="#{element.id}"
+                               itemLabel="#{element.name}"/>
+            </p:selectOneMenu>
+            <p:message for="sourceDegreeId" display="text"/>
+        </j:formRow>
+        <j:formRow label="#{messages['promotionEntryForm.targetDegree']}"
+                   required="true" styleClass="targetDegreeField">
+            <p:selectOneMenu id="targetDegreeId"
+                             value="#{promotionEntryController.targetDegreeId}"
+                             styleClass="selectOne"
+                             required="true">
+                <f:selectItems value="#{promotionEntryController.targetDegrees}"
+                               var="element"
+                               itemValue="#{element.id}"
+                               itemLabel="#{element.name}"/>
+            </p:selectOneMenu>
+            <p:message for="targetDegreeId" display="text"/>
+        </j:formRow>
+
+        <j:formRow label="#{messages['promotionEntryForm.leadTime']}"
+                   required="true">
+            <h:panelGrid columns="3" border="0" cellspacing="0" cellpadding="0" columnClasses="top,top,top">
+                <p:inputText id="leadTimeId" value="#{promotionEntryController.instance.leadTime}"
+                             styleClass="inputNumberSmall"
+                             required="true"/>
+                <p:spacer width="5"/>
+                <p:selectOneMenu id="leadTimeTypeId"
+                                 value="#{promotionEntryController.leadTimeType}"
+                                 styleClass="selectOneSmall" required="true">
+                    <f:selectItems value="#{promotionEntryController.leadTimeTypes}"
+                                   var="elementType"
+                                   itemLabel="#{messages[elementType.resourceKey]}"
+                                   itemValue="#{elementType}"/>
+                </p:selectOneMenu>
+            </h:panelGrid>
+            <p:message for="leadTimeId" display="text"/>
+        </j:formRow>
+    </h:panelGrid>
+</div>

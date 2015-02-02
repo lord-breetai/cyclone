@@ -34,6 +34,9 @@ public class PromotionPlan implements JPAEntity<Long> {
     @Column(name = PromotionPlanTable.ColumnName.CODE, length = PromotionPlanTable.ColumnLength.CODE, nullable = false)
     private String code;
 
+    @Column(name = PromotionPlanTable.ColumnName.NAME, length = PromotionPlanTable.ColumnLength.NAME, nullable = false)
+    private String name;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "promotionPlan")
     private List<PromotionEntry> promotionTable;
 
@@ -66,6 +69,14 @@ public class PromotionPlan implements JPAEntity<Long> {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getCreateDate() {

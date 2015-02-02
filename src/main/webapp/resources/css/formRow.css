@@ -9,6 +9,7 @@
     text-align: right !important;
     vertical-align: text-top !important;
     padding-right: 2px;
+    text-wrap: none;
 }
 
 .formRowLabelWidth {

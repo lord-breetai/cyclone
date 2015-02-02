@@ -88,8 +88,40 @@ table.formGrid {
     margin-top: 5px;
 }
 
+.rightButtons {
+    text-align: right;
+    margin-bottom: 2px;
+    margin-top: 5px;
+}
+
 .input {
     width: 150px;
+}
+
+.inputNumber {
+    width: 150px;
+    text-align: right;
+}
+
+.inputNumberSmall {
+    width: 70px;
+    text-align: right;
+}
+
+.selectOne {
+    width: 150px !important;
+}
+
+.selectOneSmall {
+    width: 70px !important;
+}
+
+.top {
+    vertical-align: top;
+}
+
+.selectOne .ui-selectonemenu, .selectOne .ui-selectonemenu-label {
+
 }
 
 /* Fixed widths */

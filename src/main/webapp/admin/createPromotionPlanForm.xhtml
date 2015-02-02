@@ -1,0 +1,88 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:j="http://xmlns.jcp.org/jsf/composite/components"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     class="container">
+    <p:fieldset legend="#{messages['createPromotionPlanForm.fieldset.basicInformation']}">
+        <h:panelGrid columns="2" styleClass="formGrid">
+            <h:panelGrid columns="1" styleClass="formGrid">
+                <j:formRow label="#{messages['createPromotionPlanForm.promotionPlan.code']}">
+                    <h:outputText value="#{promotionPlanController.instance.code}"/>
+                </j:formRow>
+            </h:panelGrid>
+            <h:panelGrid columns="1" styleClass="formGrid">
+                <j:formRow label="#{messages['createPromotionPlanForm.promotionPlan.name']}" required="true">
+                    <p:inputText id="promotionPlanNameId" value="#{promotionPlanController.instance.name}"
+                                 styleClass="input"
+                                 required="true"/>
+                    <p:message for="promotionPlanNameId" display="text"/>
+                </j:formRow>
+            </h:panelGrid>
+        </h:panelGrid>
+    </p:fieldset>
+    <p:spacer height="1"/>
+    <p:fieldset legend="#{messages['createPromotionPlanForm.fieldset.promotionTable']}">
+        <p:outputPanel id="promotionTablePanelId">
+            <div class="rightButtons">
+                <p:commandButton action="#{createPromotionPlanController.initializePromotionEntryController}"
+                                 ajax="true"
+                                 icon="ui-icon-plus"
+                                 oncomplete="PF('createPromotionEntryDialog').show()"
+                                 process="@this"/>
+            </div>
+            <p:outputPanel id="promotionEntryTableId">
+                <p:dataTable var="promotionEntry" value="#{promotionPlanTableController.promotionTable}">
+                    <p:column headerText="#{messages['createPromotionPlanForm.promotionTable.sourceDegree']}"
+                              styleClass="width25Pct">
+                        <h:outputText value="#{promotionEntry.sourceDegree.name}"/>
+                    </p:column>
+                    <p:column headerText="#{messages['createPromotionPlanForm.promotionTable.targetDegree']}"
+                              styleClass="width25Pct">
+                        <h:outputText value="#{promotionEntry.targetDegree.name}"/>
+                    </p:column>
+                    <p:column headerText="#{messages['createPromotionPlanForm.promotionTable.leadTime']}"
+                              styleClass="width50Pct">
+                        <h:outputFormat value="#{messages['createPromotionPlanForm.promotionTable.leadTimeFormat']}">
+                            <f:param value="#{promotionEntry.leadTime}"/>
+                            <f:param value="#{messages[promotionEntry.leadTimeType.resourceKey]}"/>
+                        </h:outputFormat>
+                    </p:column>
+                </p:dataTable>
+            </p:outputPanel>
+
+        </p:outputPanel>
+    </p:fieldset>
+
+    <p:dialog id="createPromotionEntryDialogId"
+              widgetVar="createPromotionEntryDialog"
+              header="#{messages['createPromotionEntryDialog.title']}"
+              modal="true"
+              dynamic="true"
+              appendTo="@(body)"
+              width="520"
+              resizable="false">
+        <p:ajax event="close" update="createPromotionEntryDialogId" resetValues="true"/>
+
+        <h:form prependId="false">
+            <p:outputPanel id="promotionEntryPanelId">
+                <p:panel>
+                    <ui:include src="/admin/promotionEntryForm.xhtml"/>
+                    <p:focus context="promotionEntryPanelId"/>
+
+                    <div class="buttons">
+                        <p:commandButton action="#{createPromotionPlanController.addPromotionEntry}"
+                                         ajax="true"
+                                         value="#{messages['button.label.add']}"
+                                         process="promotionEntryPanelId"
+                                         update="promotionEntryPanelId"
+                                         partialSubmit="true"/>
+                        <p:button value="#{messages['button.label.cancel']}"
+                                  onclick="PF('createPromotionEntryDialog').hide(); return false;"/>
+                    </div>
+                </p:panel>
+            </p:outputPanel>
+        </h:form>
+    </p:dialog>
+</div>

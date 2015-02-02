@@ -7,6 +7,7 @@ import org.alfac.cyclone.model.Degree;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * @author Ivan
@@ -17,6 +18,18 @@ public class DegreeService {
 
     @Inject
     private DegreeRepository degreeRepository;
+
+    public List<Degree> findAll() {
+        return degreeRepository.findAll();
+    }
+
+    public List<Degree> findDegreeByIdNotIn(List<Long> elements) {
+        if (null == elements || elements.isEmpty()) {
+            return findAll();
+        }
+
+        return degreeRepository.findByIdNotIn(elements);
+    }
 
     public Degree findDegree(Long id) throws EntryNotFoundException {
         Degree instance = degreeRepository.findBy(id);

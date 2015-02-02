@@ -6,13 +6,14 @@
     <cc:interface componentType="cyclone.faces.FormRow">
         <cc:attribute name="label" required="true"/>
         <cc:attribute name="labelClass" required="false"/>
+        <cc:attribute name="styleClass" required="false" default=""/>
         <cc:attribute name="contentClass" required="false"/>
         <cc:attribute name="required" type="java.lang.Boolean" default="false"/>
     </cc:interface>
 
     <cc:implementation>
         <link type="text/css" rel="stylesheet" href="#{resource['css/formRow.css']}"/>
-        <table jsf:id="formRow" class="formRow">
+        <table jsf:id="formRow" class="formRow #{cc.attrs.styleClass}">
             <tr>
                 <td class="#{cc.labelClass}">
                     <label id="#{cc.clientId}_label">
