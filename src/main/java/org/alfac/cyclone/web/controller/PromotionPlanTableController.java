@@ -34,6 +34,14 @@ public class PromotionPlanTableController implements Serializable {
         promotionTable.add(instance);
     }
 
+    public void removePromotionEntry(PromotionEntry instance) {
+        Integer index = promotionTable.indexOf(instance);
+
+        if (index > -1) {
+            promotionTable.remove(instance);
+        }
+    }
+
     public LinkedList<PromotionEntry> getPromotionTable() {
         return promotionTable;
     }

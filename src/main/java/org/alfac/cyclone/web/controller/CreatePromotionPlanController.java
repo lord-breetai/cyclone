@@ -1,7 +1,7 @@
 package org.alfac.cyclone.web.controller;
 
-import org.alfac.cyclone.framework.controller.action.annotation.Action;
-import org.alfac.cyclone.framework.controller.action.annotation.Success;
+import org.alfac.cyclone.exception.DuplicatedEntryException;
+import org.alfac.cyclone.framework.controller.action.annotation.*;
 import org.alfac.cyclone.model.PromotionEntry;
 import org.alfac.cyclone.service.DegreeService;
 import org.apache.log4j.Logger;
@@ -57,5 +57,26 @@ public class CreatePromotionPlanController implements Serializable {
         PromotionEntry instance = promotionEntryController.getInstance();
 
         promotionPlanTableController.registerPromotionEntry(instance);
+    }
+
+    @Action(
+            onSuccess = @Success(
+                    message = "CreatePromotionPlanController.info.entryRemovedMsg",
+                    update = "promotionEntryTableId"
+            )
+    )
+    public void removePromotionEntry(PromotionEntry instance) {
+        promotionPlanTableController.removePromotionEntry(instance);
+    }
+
+    @Action(
+            onSuccess = @Success(
+                    message = "CreatePromotionPlanController.info.entrySavedMsg",
+                    update = {"promotionPlanDataTableId"},
+                    execute = {"PF('createPromotionPlanDialog').hide()"}
+            )
+    )
+    public void createAction() {
+        initializeController();
     }
 }

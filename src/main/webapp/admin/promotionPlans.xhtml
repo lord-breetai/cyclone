@@ -79,13 +79,48 @@
 
         <h:form prependId="false">
             <p:outputPanel id="createPromotionPlanFormPanelId">
+                <ui:include src="/admin/createPromotionPlanForm.xhtml"/>
+                <p:focus context="createPromotionPlanFormPanelId"/>
+
+                <div class="buttons">
+                    <p:commandButton action="#{createPromotionPlanController.createAction}"
+                                     ajax="true"
+                                     value="#{messages['button.label.save']}"
+                                     process="createPromotionPlanFormPanelId"
+                                     update="createPromotionPlanFormPanelId"
+                                     partialSubmit="true"/>
+                    <p:button value="#{messages['button.label.cancel']}"
+                              onclick="PF('createPromotionPlanDialog').hide(); return false;"/>
+                </div>
+            </p:outputPanel>
+        </h:form>
+    </p:dialog>
+
+    <p:dialog id="createPromotionEntryDialogId"
+              widgetVar="createPromotionEntryDialog"
+              header="#{messages['createPromotionEntryDialog.title']}"
+              modal="true"
+              dynamic="true"
+              appendTo="@(body)"
+              width="520"
+              resizable="false">
+        <p:ajax event="close" update="createPromotionEntryDialogId" resetValues="true"/>
+
+        <h:form prependId="false">
+            <p:outputPanel id="promotionEntryPanelId">
                 <p:panel>
-                    <ui:include src="/admin/createPromotionPlanForm.xhtml"/>
-                    <p:focus context="createPromotionPlanFormPanelId"/>
+                    <ui:include src="/admin/promotionEntryForm.xhtml"/>
+                    <p:focus context="promotionEntryPanelId"/>
 
                     <div class="buttons">
+                        <p:commandButton action="#{createPromotionPlanController.addPromotionEntry}"
+                                         ajax="true"
+                                         value="#{messages['button.label.add']}"
+                                         process="promotionEntryPanelId"
+                                         update="promotionEntryPanelId"
+                                         partialSubmit="true"/>
                         <p:button value="#{messages['button.label.cancel']}"
-                                  onclick="PF('createPromotionPlanDialog').hide(); return false;"/>
+                                  onclick="PF('createPromotionEntryDialog').hide(); return false;"/>
                     </div>
                 </p:panel>
             </p:outputPanel>

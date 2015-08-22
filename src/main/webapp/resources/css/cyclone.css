@@ -120,6 +120,17 @@ table.formGrid {
     vertical-align: top;
 }
 
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
 .selectOne .ui-selectonemenu, .selectOne .ui-selectonemenu-label {
 
 }

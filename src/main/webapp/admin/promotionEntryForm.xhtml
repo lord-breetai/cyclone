@@ -8,6 +8,7 @@
     <h:panelGrid columns="1" styleClass="formGrid">
         <j:formRow label="#{messages['promotionEntryForm.sourceDegree']}"
                    required="true">
+            <p:outputLabel value="#{promotionEntryController.sourceDegreeId}"/>
             <p:selectOneMenu id="sourceDegreeId"
                              value="#{promotionEntryController.sourceDegreeId}"
                              styleClass="selectOne"

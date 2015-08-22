@@ -18,7 +18,6 @@
                         <p:commandButton actionListener="#{degreeDataModel.search}"
                                          ajax="true" update=":degreeDataTableId"
                                          process="@form"
-                                         value="#{messages['button.label.search']}"
                                          icon="ui-icon-search"/>
                     </f:facet>
                     <f:facet name="right">
@@ -70,22 +69,20 @@
 
         <h:form prependId="false">
             <p:outputPanel id="degreeFormPanelId">
-                <p:panel>
-                    <ui:include src="/admin/degreeForm.xhtml"/>
+                <ui:include src="/admin/degreeForm.xhtml"/>
 
-                    <p:focus context="degreeFormPanelId"/>
+                <p:focus context="degreeFormPanelId"/>
 
-                    <div class="buttons">
-                        <p:commandButton action="#{degreeController.createAction}"
-                                         ajax="true"
-                                         value="#{messages['button.label.save']}"
-                                         process="degreeFormPanelId"
-                                         update="degreeFormPanelId"
-                                         partialSubmit="true"/>
-                        <p:button value="#{messages['button.label.cancel']}"
-                                  onclick="PF('createDegreeDialog').hide(); return false;"/>
-                    </div>
-                </p:panel>
+                <div class="buttons">
+                    <p:commandButton action="#{degreeController.createAction}"
+                                     ajax="true"
+                                     value="#{messages['button.label.save']}"
+                                     process="degreeFormPanelId"
+                                     update="degreeFormPanelId"
+                                     partialSubmit="true"/>
+                    <p:button value="#{messages['button.label.cancel']}"
+                              onclick="PF('createDegreeDialog').hide(); return false;"/>
+                </div>
             </p:outputPanel>
         </h:form>
     </p:dialog>

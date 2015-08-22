@@ -73,21 +73,19 @@
         <p:ajax event="close" update="createCountryDialogId" resetValues="true"/>
         <h:form prependId="false">
             <p:outputPanel id="countryFormPanelId">
-                <p:panel>
-                    <ui:include src="/admin/countryForm.xhtml"/>
+                <ui:include src="/admin/countryForm.xhtml"/>
+                <p:focus context="countryFormPanelId"/>
 
-                    <p:focus context="countryFormPanelId"/>
-                    <div class="buttons">
-                        <p:commandButton action="#{countryController.createAction}"
-                                         ajax="true"
-                                         value="#{messages['button.label.save']}"
-                                         process="countryFormPanelId"
-                                         update="countryFormPanelId"
-                                         partialSubmit="true"/>
-                        <p:button value="#{messages['button.label.cancel']}"
-                                  onclick="PF('createCountryDialog').hide(); return false;"/>
-                    </div>
-                </p:panel>
+                <div class="buttons">
+                    <p:commandButton action="#{countryController.createAction}"
+                                     ajax="true"
+                                     value="#{messages['button.label.save']}"
+                                     process="countryFormPanelId"
+                                     update="countryFormPanelId"
+                                     partialSubmit="true"/>
+                    <p:button value="#{messages['button.label.cancel']}"
+                              onclick="PF('createCountryDialog').hide(); return false;"/>
+                </div>
             </p:outputPanel>
         </h:form>
     </p:dialog>

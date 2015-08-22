@@ -1,13 +1,48 @@
 /*
 * Font size for all primefaces components
 */
-.ui-widget {
-    font-size: 11px !important;
-    border-radius: 0 !important;
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 12px !important;
+}
+
+.ui-corner-tl {
+    border-top-left-radius: 2px !important;
+}
+
+.ui-corner-tr {
+    border-top-right-radius: 2px !important;
+}
+
+.ui-corner-bl {
+    border-bottom-left-radius: 2px !important;
+}
+
+.ui-corner-br {
+    border-bottom-right-radius: 2px !important;
+}
+
+.ui-corner-top {
+    border-top-left-radius: 2px !important;
+    border-top-right-radius: 2px !important;
+}
+
+.ui-corner-bottom {
+    border-bottom-left-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
+}
+
+.ui-corner-right {
+    border-bottom-right-radius: 2px !important;
+    border-top-right-radius: 2px !important;
+}
+
+.ui-corner-left {
+    border-bottom-left-radius: 2px !important;
+    border-top-left-radius: 2px !important;
 }
 
 .ui-corner-all {
-    border-radius: 0 !important;
+    border-radius: 2px !important;
 }
 
 /*
